@@ -15,3 +15,13 @@ tags: []
 1. 将 需要安装的文件，不能联网的都放到一个文件下，统一安装。
 2. - [] dockerfile中RUN执行 source 命令就会失败
 3. - [] 交叉编译器 的路径，放到env中不识别，需要后续补充
+   
+## 时区修改 
+- [] 时区修改，使用如下命令 但没有作用
+docker cp /etc/localtime 0f2d0ffb7a41:/etc/localtime
+docker exec -it 0f2d0ffb7a41 bash -c "echo 'Asia/Shanghai' > /etc/timezone"
+
+
+
+# 执行命令
+docker build -t  embed-test1 .
