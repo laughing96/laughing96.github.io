@@ -24,4 +24,16 @@ docker exec -it 0f2d0ffb7a41 bash -c "echo 'Asia/Shanghai' > /etc/timezone"
 
 
 # 执行命令
-docker build -t  embed-test1 .
+docker build -t  embed-test1 
+vscode 配置docker 插件后可以直接attach 使用
+
+# minicom 验证 U-boot 启动
+## minicom 配置
+```
+minicom -s 设置 /dev/ttyUSB0 115200 
+```
+
+## usb
+eject /dev/sda1 
+eject /dev/sda
+## minicom show nothing

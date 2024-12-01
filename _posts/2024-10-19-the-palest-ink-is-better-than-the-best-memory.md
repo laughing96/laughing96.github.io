@@ -79,5 +79,41 @@ arm-linux-gnueabihf-gcc -v
 
 ## 开发板的内核移植
 ### U-BOOT 移植
+1. 设备校验
+   读卡器使用adapter + SD卡 才能读到 /dev/sda1
+   imxdownload 可以用
+    电脑的第二个USB口能用
+    开发版的SD卡 启动方式不能用
+
+    分不清楚 /dev/ 里面的内容，使用fdisk 。一看就明白了
+    ```
+    fdisk -l /dev/sda
+    ```
+    isk /dev/sda：29.12 GiB，31266439168 字节，61067264 个扇区
+    Disk model: Storage Device  
+    单元：扇区 / 1 * 512 = 512 字节
+    扇区大小(逻辑/物理)：512 字节 / 512 字节
+    I/O 大小(最小/最佳)：512 字节 / 512 字节
+    磁盘标签类型：dos
+    磁盘标识符：0xa4657860
+
+    设备       启动 起点     末尾     扇区  大小 Id 类型
+    /dev/sda1         32 61067263 61067232 29.1G  c W95 FAT32 (LBA)
+2. 网络连接
+  2.1 物理准备
+    网线插上。
+    ![ubuntu网络有线连接](../img/开发版/ubuntuf网络连接配置.png)
+    ```
+    setenv ipaddr 192.168.10.110
+    setenv ethaddr b8:ae:1d:01:00:00
+    setenv gatewayip 192.168.10.1
+    setenv netmask 255.255.255.0
+    setenv serverip 192.168.10.100
+    saveenv
+    
+    ping 192.168.10.100
+    ```
+    
+
 ### linux 内核移植
 ### 根文件系统移植

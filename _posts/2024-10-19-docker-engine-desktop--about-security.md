@@ -42,3 +42,8 @@ Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docke
    
 *good question*
 NFS mounts as the docker "data-root" is not supported. This limitation is not specific to rootless mode.
+
+
+# linux
+```
+netstat -tulpn 
